@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đại Hội Tết - Tiểu Đội 3</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="falling-flowers">
+        <i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i>
+    </div>
+
+    <header>
+        <h1>🧨 CHÚC MỪNG NĂM MỚI 2026 🧨</h1>
+        <h2>Tiểu Đội 3 - Trung Đoàn 12K</h2>
+        <p>"Vui xuân không quên nhiệm vụ - Nhưng đã vui là phải tới bến!"</p>
+    </header>
+
+    <section class="container">
+        <h3>🎬 Phim Ngắn: Táo Quân Tiểu Đội</h3>
+        <div class="video-box">
+            <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <p><i>(Video demo chương trình văn nghệ cây nhà lá vườn)</i></p>
+    </section>
+
+    <section class="container game-section">
+        <h3>🙏 Gieo Quẻ Đầu Năm 🙏</h3>
+        <p>Thành tâm xin quẻ, xem năm nay đen hay đỏ?</p>
+        <div id="que-result" class="hidden" style="display:none;">...</div>
+        <button onclick="xinQue()" class="btn-game">Rút Quẻ Ngay</button>
+    </section>
+
+    <section class="container game-section">
+        <h3>🎡 Vòng Quay "Nhân Phẩm"</h3>
+        <p>Quay đi, đen thôi đỏ quên đi!</p>
+        <div class="wheel-container">
+            <div class="pointer">🔻</div>
+            <div class="wheel" id="vong-quay">
+                <div class="segment" style="--i:1; --clr:#f44336;"><span>Hít đất 20 cái</span></div>
+                <div class="segment" style="--i:2; --clr:#e91e63;"><span>Được mời nước</span></div>
+                <div class="segment" style="--i:3; --clr:#9c27b0;"><span>Hát 1 bài</span></div>
+                <div class="segment" style="--i:4; --clr:#3f51b5;"><span>Miễn trực nhật</span></div>
+                <div class="segment" style="--i:5; --clr:#03a9f4;"><span>Kể 1 bí mật</span></div>
+                <div class="segment" style="--i:6; --clr:#009688;"><span>Chúc Tết cả phòng</span></div>
+                <div class="segment" style="--i:7; --clr:#8bc34a;"><span>Uống 1 ly</span></div>
+                <div class="segment" style="--i:8; --clr:#ffeb3b;"><span>Qua lượt</span></div>
+            </div>
+        </div>
+        <button onclick="quaySo()" class="btn-game" id="btn-spin">QUAY NGAY</button>
+    </section>
+
+    <section class="container game-section">
+        <h3>🧠 Thử Thách: Ai Hiểu Tiểu Đội Nhất?</h3>
+        <div id="quiz-container">
+            <h4 id="question-text">Đang tải câu hỏi...</h4>
+            <div class="answers-box" id="answers-box"></div>
+            <p id="quiz-feedback"></p>
+        </div>
+        <button onclick="nextQuestion()" class="btn-game" id="btn-next" style="display:none;">Câu Tiếp Theo</button>
+    </section>
+
+    <div class="container-wide" id="danh-sach-event">
+        <h2 style="color: #FFD700; text-shadow: 2px 2px #000; margin-top: 50px;">🏆 CÁC NỘI DUNG THI ĐẤU CHÍNH THỨC 🏆</h2>
+        
+        <div class="event-card">
+            <div class="event-img">
+                <img src="https://media.istockphoto.com/id/1196422638/vi/vec-to/b%C3%A1nh-ch%C6%B0ng-v%C3%A0-b%C3%A1nh-tet-th%E1%BB%B1c-ph%E1%BA%A9m-truy%E1%BB%81n-th%E1%BB%91ng-vi%E1%BB%87t-nam-m%E1%BB%ABng-n%C4%83m-m%E1%BB%9Bi-m%E1%BA%ADu-t%E1%BB%9D-ng%C6%B0%E1%BB%9Di-c%E1%BA%A7m.jpg?s=612x612&w=0&k=20&c=N5854lP-C01tBwT2xT-3e-wP_L1kU5zOOFmC9xM2x8k=" alt="Gói bánh">
+            </div>
+            <div class="event-info">
+                <h3>🫔 Hội Thi: Khéo Tay Gói Bánh</h3>
+                <ul>
+                    <li><strong>🕒 Thời gian:</strong> 14:00 - 28 Tết</li>
+                    <li><strong>📜 Thể lệ:</strong> Đội 3 người. Gói 5 cái bánh chưng vuông vức.</li>
+                    <li><strong>🎁 Giải thưởng:</strong> 1 Thùng bia + Miễn trực nhật 2 ngày.</li>
+                </ul>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeKWRc96cY6JbiYL8mH7BcDxaqn94BAgHDoUQ1ARNezLehUaA/viewform?usp=publish-editor" target="_blank" class="btn-register">ĐĂNG KÝ GÓI BÁNH</a>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <div class="event-img">
+                <img src="https://img.freepik.com/premium-vector/karaoke-party-background_23-2147506979.jpg" alt="Văn nghệ">
+            </div>
+            <div class="event-info">
+                <h3>🎤 Gala: Gương Mặt Thân Quen</h3>
+                <ul>
+                    <li><strong>🕒 Thời gian:</strong> 19:30 - Đêm Giao Thừa</li>
+                    <li><strong>📜 Thể lệ:</strong> Hát, múa, kịch, tấu hài...</li>
+                    <li><strong>🎁 Giải thưởng:</strong> Bao lì xì 500k nóng hổi.</li>
+                </ul>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeKWRc96cY6JbiYL8mH7BcDxaqn94BAgHDoUQ1ARNezLehUaA/viewform?usp=publish-editor" target="_blank" class="btn-register">ĐĂNG KÝ TIẾT MỤC</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Code bởi: [Tên Bạn] - Tiểu Đội 3 🇻🇳</p>
+    </footer>
+
+    <script src="game.js"></script>
+</body>
+</html>

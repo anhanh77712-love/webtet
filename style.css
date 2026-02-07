@@ -1,0 +1,138 @@
+body {
+    background-color: #8B0000;
+    color: #FFD700;
+    font-family: 'Pangolin', cursive;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+header {
+    background-image: url('https://media.istockphoto.com/id/1193306692/vector/vietnamese-new-year-background.jpg?s=612x612&w=0&k=20&c=s5fHw-3hT9QYq-Jk-R-1-o-m-m-0-0-1');
+    background-size: cover;
+    padding: 50px 20px;
+    border-bottom: 5px solid #FFD700;
+}
+
+h1 { font-size: 2.5em; text-shadow: 2px 2px 0px #000; margin: 10px 0; }
+h2 { font-size: 1.5em; color: #fff; }
+
+/* --- CSS CHO CÁC KHỐI CHỨA --- */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #FFD700;
+}
+
+.container-wide {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+/* --- CSS CHO TRÒ CHƠI --- */
+.btn-game {
+    background-color: #FFD700;
+    color: #8B0000;
+    border: none;
+    padding: 15px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+.btn-game:hover { background-color: #fff; transform: scale(1.1); }
+
+#que-result {
+    font-size: 24px; color: #fff; background: #000;
+    padding: 20px; margin: 20px 0; border-radius: 10px;
+    display: none; animation: fadeIn 1s;
+}
+
+/* Vòng quay */
+.wheel-container {
+    position: relative; width: 300px; height: 300px;
+    margin: 20px auto; overflow: hidden; border-radius: 50%;
+    border: 5px solid #fff; box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
+.wheel {
+    width: 100%; height: 100%; border-radius: 50%;
+    position: relative; transition: transform 4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+.segment {
+    position: absolute; width: 50%; height: 50%;
+    transform-origin: bottom right;
+    transform: rotate(calc(45deg * var(--i)));
+    background-color: var(--clr);
+    display: flex; justify-content: center; align-items: center;
+    clip-path: polygon(0 0, 100% 0, 100% 100%);
+}
+.segment span {
+    position: absolute; transform: rotate(45deg);
+    margin-top: 50px; margin-left: 50px;
+    font-size: 14px; font-weight: bold; color: #fff; width: 100px;
+}
+.pointer {
+    position: absolute; top: -10px; left: 50%;
+    transform: translateX(-50%); z-index: 10; font-size: 30px;
+}
+
+/* Quiz */
+.answers-box { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
+.btn-answer {
+    background-color: #fff; color: #333; border: 2px solid #FFD700;
+    padding: 10px; border-radius: 8px; cursor: pointer; font-size: 16px;
+}
+.btn-answer:hover { background-color: #FFD700; color: #8B0000; }
+.correct { background-color: #4CAF50 !important; color: white !important; }
+.wrong { background-color: #f44336 !important; color: white !important; }
+
+/* --- CSS CHO THẺ SỰ KIỆN (MỚI) --- */
+.event-card {
+    background: #fff; color: #333; border-radius: 15px;
+    overflow: hidden; margin-bottom: 30px; display: flex;
+    flex-wrap: wrap; text-align: left;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    border: 4px solid #FFD700; transition: transform 0.3s;
+}
+.event-card:hover { transform: translateY(-5px); }
+.event-img { flex: 1; min-width: 250px; }
+.event-img img { width: 100%; height: 100%; object-fit: cover; min-height: 250px; }
+.event-info { flex: 2; padding: 25px; display: flex; flex-direction: column; justify-content: center; }
+.event-info h3 { color: #b71c1c; font-size: 1.8em; margin: 0 0 15px 0; border-bottom: 2px dashed #b71c1c; display: inline-block; }
+.event-info ul { list-style: none; padding: 0; margin-bottom: 20px; }
+.event-info li { font-size: 1.1em; margin-bottom: 10px; }
+
+.btn-register {
+    display: block; background-color: #d32f2f; color: white;
+    padding: 15px; text-align: center; text-decoration: none;
+    font-size: 1.2em; border-radius: 8px; font-weight: bold;
+    box-shadow: 0 4px 0 #b71c1c; transition: 0.2s;
+}
+.btn-register:hover { background-color: #ff5252; transform: translateY(2px); box-shadow: 0 2px 0 #b71c1c; }
+
+/* --- HOA RƠI --- */
+.falling-flowers { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
+.falling-flowers i {
+    position: absolute; display: block; width: 30px; height: 30px;
+    background-image: url('https://emojigraph.org/media/apple/cherry-blossom_1f338.png');
+    background-size: contain; background-repeat: no-repeat;
+    animation: fall linear infinite; top: -50px;
+}
+.falling-flowers i:nth-child(1) { left: 10%; width: 20px; height: 20px; animation-duration: 10s; }
+.falling-flowers i:nth-child(2) { left: 20%; width: 15px; height: 15px; animation-duration: 12s; animation-delay: 2s; }
+.falling-flowers i:nth-child(3) { left: 70%; width: 25px; height: 25px; animation-duration: 8s; animation-delay: 4s; }
+.falling-flowers i:nth-child(4) { left: 40%; width: 18px; height: 18px; animation-duration: 15s; animation-delay: 1s; }
+.falling-flowers i:nth-child(5) { left: 85%; width: 22px; height: 22px; animation-duration: 9s; animation-delay: 3s; }
+
+@keyframes fall {
+    0% { transform: translate(0, 0) rotate(0deg); opacity: 0.8; }
+    100% { transform: translate(100px, 100vh) rotate(360deg); opacity: 0; }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
