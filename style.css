@@ -136,3 +136,90 @@ h2 { font-size: 1.5em; color: #fff; }
     100% { transform: translate(100px, 100vh) rotate(360deg); opacity: 0; }
 }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+/* --- CSS CHO KHỐI GIỚI THIỆU TẾT --- */
+.tet-intro {
+    margin-top: 20px; /* Kéo lênm 1 chút đè lên header cho đẹp */
+    position: relative;
+    z-index: 10;
+}
+
+.tet-card-highlight {
+    background: linear-gradient(135deg, #fff 0%, #ffebee 100%); /* Màu trắng hồng */
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4); /* Bóng màu vàng kim */
+    border: 3px solid #b71c1c;
+}
+
+.tet-row {
+    display: flex;
+    flex-wrap: wrap; /* Tự xuống dòng trên điện thoại */
+    align-items: center;
+}
+
+.tet-col-img {
+    flex: 1;
+    min-width: 200px;
+    padding: 10px;
+}
+
+.tet-col-img img {
+    width: 100%;
+    border-radius: 15px;
+    border: 2px solid #FFD700;
+    box-shadow: 5px 5px 0 #b71c1c;
+    animation: pulse 2s infinite; /* Hiệu ứng nhịp đập */
+}
+
+.tet-col-text {
+    flex: 2;
+    padding: 20px;
+    text-align: left;
+}
+
+.tet-col-text h3 {
+    color: #d32f2f;
+    font-size: 1.8em;
+    margin-top: 0;
+    text-transform: uppercase;
+    border-bottom: 2px dashed #FFD700;
+    display: inline-block;
+}
+
+.tet-poem {
+    font-style: italic;
+    color: #b71c1c;
+    font-weight: bold;
+    background: rgba(255, 215, 0, 0.2);
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.tet-message p {
+    color: #333;
+    font-size: 1.1em;
+    margin-bottom: 10px;
+}
+
+.tet-message strong {
+    color: #d32f2f;
+}
+
+/* Hiệu ứng nhịp đập cho ảnh */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+    100% { transform: scale(1); }
+}
+
+/* Chỉnh cho điện thoại: Ảnh lên trên, chữ xuống dưới */
+@media (max-width: 600px) {
+    .tet-row {
+        flex-direction: column;
+    }
+    .tet-col-text {
+        text-align: center;
+    }
+}
