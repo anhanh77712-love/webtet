@@ -18,118 +18,271 @@
         <h1>🧨 CHÚC MỪNG NĂM MỚI 2026 🧨</h1>
         <h2>Tiểu Đội 3 - Trung Đoàn 12K</h2>
         <p>"Vui xuân không quên nhiệm vụ - Nhưng đã vui là phải tới bến!"</p>
+        <div class="list-member">
+            <div class="member-title">⭐ ĐIỂM DANH QUÂN SỐ (11/11) ⭐</div>
+            <div class="member-grid">
+                <span class="member-tag">Nguyễn Thị Ánh Ngọc</span>
+                <span class="member-tag">Hà Kiều Trang</span>
+                <span class="member-tag">Nguyễn Đức Long</span>
+                <span class="member-tag">Đặng Hồng Nhung</span>
+                <span class="member-tag">Chu Minh Sáng</span>
+                <span class="member-tag">Nguyễn Phùng Như Nguyệt</span>
+                <span class="member-tag">Nguyễn Hương Liên</span>
+                <span class="member-tag">Đỗ Thị Khánh Ly</span>
+                <span class="member-tag">Nguyễn Đức Duy Mạnh</span>
+                <span class="member-tag">Nguyễn Thị Hải Yến</span>
+                <span class="member-tag">Lê Thị Hồng Phượng</span>
+            </div>
+        </div>
     </header>
 
     <section class="container tet-intro">
         <div class="tet-card-highlight">
-            <div class="tet-row">
-                <div class="tet-col-img">
-                    <img src="/images/tet.jpg" alt="Tết Bính Ngọ">
+            <div class="tet-header-text">
+                <h3>🌸 TẾT - HỒN VIỆT & SỰ TRỞ VỀ 🌸</h3>
+                <p class="intro-emotional">
+                    "Mỗi khi những cành đào hé nở, mùi hương bánh chưng lan tỏa khắp gian bếp, chúng ta biết rằng Tết – khoảnh khắc sum vầy thiêng liêng nhất của người Việt – lại về…"
+                </p>
+                <p class="intro-desc">
+                    Tết Nguyên Đán là lễ hội truyền thống quan trọng nhất, là dịp con người hướng về gia đình, tổ tiên và các giá trị văn hóa lâu đời.
+                </p>
+            </div>
+
+            <div class="tet-gallery">
+                <div class="gallery-item">
+                    <img src="/images/tet1.png" alt="Bánh Chưng">
+                    <span class="caption">Hương vị Tết</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/tet2.png" alt="Gia đình sum vầy">
+                    <span class="caption">Sum Vầy</span>
+                </div>
+                <div class="gallery-item">
+                    <img src="/images/tet3.png" alt="Hoa Mai Đào">
+                    <span class="caption">Sắc Xuân</span>
+                </div>
+            </div>
+
+            <div class="tet-info-grid">
+                <div class="info-box">
+                    <h4>⏳ Thời gian</h4>
+                    <p>Thường rơi vào cuối tháng 1 hoặc đầu tháng 2 dương lịch. Bắt đầu rộn ràng từ 23 tháng Chạp (tiễn Ông Táo) và kéo dài 3 ngày đầu năm.</p>
+                </div>
+                <div class="info-box">
+                    <h4>🌾 Nguồn gốc</h4>
+                    <p>Xuất phát từ văn minh nông nghiệp lúa nước, gắn với chu kỳ mùa vụ. Chịu ảnh hưởng văn hóa Á Đông nhưng đã được Việt hóa đậm đà bản sắc.</p>
+                </div>
+                <div class="info-box">
+                    <h4>💖 Ý nghĩa</h4>
+                    <p>Đạo lý "uống nước nhớ nguồn". Là dịp thiêng liêng để cúng bái tổ tiên, đoàn tụ gia đình và cầu chúc may mắn, tài lộc.</p>
+                </div>
+                <div class="info-box">
+                    <h4>🔥 Vai trò</h4>
+                    <p>Dù cuộc sống hiện đại hối hả, Tết vẫn là khoảng nghỉ ngơi quý giá để tái tạo năng lượng và hy vọng vào tương lai tốt đẹp.</p>
+                </div>
+            </div>
+
+            <div class="tet-footer-text">
+                <p>
+                    "Tết không chỉ là lễ hội truyền thống mà còn là biểu tượng văn hóa, góp phần gìn giữ bản sắc dân tộc và kết nối các thế hệ người Việt, dù ở trong nước hay xa quê hương."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container game-section" id="xong-dat-section">
+        <h3>🧧 Thử Tài Xông Đất - Nhận Lộc Đầu Năm 🧧</h3>
+        <p>Trả lời đúng câu hỏi dưới đây để được nhận một phần quà bí mật từ Ban Tổ Chức!</p>
+        
+        <div class="quiz-box" id="quiz-box">
+            <h4 class="question-text">
+                ❓ Câu hỏi: Việc “xông đất” đầu năm phản ánh quan niệm nào của người Việt truyền thống?
+            </h4>
+            <div class="options-grid">
+                <button onclick="checkXongDat('A')" class="btn-option">A. Tín ngưỡng thờ Mẫu</button>
+                <button onclick="checkXongDat('B')" class="btn-option">B. Quan niệm về sự khởi đầu và yếu tố tâm linh ảnh hưởng đến vận mệnh</button>
+                <button onclick="checkXongDat('C')" class="btn-option">C. Tư duy khoa học thực nghiệm</button>
+                <button onclick="checkXongDat('D')" class="btn-option">D. Quan niệm về quyền lực chính trị</button>
+            </div>
+        </div>
+
+        <div id="result-area" style="display: none; margin-top: 20px;">
+            <div id="wrong-msg" class="wrong-notice">
+                <div class="wrong-icon">😅</div>
+                
+                <h3>Úi chà! Chưa chính xác rồi đồng chí ơi!</h3>
+                <p>Kiến thức này hơi "khoai", bình tĩnh suy nghĩ lại nhé.</p>
+                
+                <button onclick="thuLai()" class="btn-retry">
+                    🔄 Chọn Lại Đáp Án
+                </button>
+            </div>
+
+            <div id="right-msg" style="display: none;">
+                <h3 style="color: #FFD700;">🎉 CHÍNH XÁC! BẠN QUÁ ĐỈNH! 🎉</h3>
+                <p>Mời bạn bốc thăm phần thưởng đặc biệt:</p>
+                
+                <div class="lucky-draw-box">
+                    <div id="gift-result" class="gift-text">???</div>
+                    <button onclick="moQuaXongDat()" id="btn-mo-qua" class="btn-game pulse-anim">🎁 Rút Quẻ Ngay 🎁</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container-wide customs-section tet-pattern-bg">
+        <h2 class="section-title">🎋 PHONG TỤC CỔ TRUYỀN 🎋</h2>
+        <p class="section-desc">"Thịt mỡ dưa hành câu đối đỏ - Cây nêu tràng pháo bánh chưng xanh"</p>
+
+        <div class="custom-card paper-style">
+            <div class="custom-text">
+                <h3>🕯️ 1. Thờ Cúng Tổ Tiên</h3>
+                <p>Chuẩn bị mâm cỗ Tết tươm tất, thắp hương tưởng nhớ ông bà, tổ tiên. Đây là nghi thức thiêng liêng nhất thể hiện lòng hiếu kính và đạo lý "Uống nước nhớ nguồn" của dân tộc.</p>
+            </div>
+            <div class="custom-gallery grid-4">
+                <img src="/images/tho1.png" alt="Mâm cỗ">
+                <img src="/images/tho2.png" alt="Thắp hương">
+                <img src="/images/tho3.png" alt="Cầu nguyện">
+                <img src="/images/tho4.png" alt="Bàn thờ ngày Tết">
+            </div>
+        </div>
+
+        <div class="custom-card paper-style reverse" style="overflow: hidden;">
+            
+            <div class="custom-text" style="background: linear-gradient(to bottom, #FFFBE6, #FFF8E1) !important; z-index: 10;">
+                <h3>🫔 2. Gói Bánh Chưng, Bánh Tét</h3>
+                <p>Biểu tượng cho Đất và Trời, kết tinh của thiên nhiên. Hình ảnh cả gia đình quây quần gói bánh thể hiện mong ước một năm mới đủ đầy, ấm no và sung túc.</p>
+            </div>
+            
+            <div class="custom-gallery grid-3" style="padding: 10px;">
+                <div class="img-large">
+                    <img src="images/bc3.png" alt="Bánh Chưng Luộc" onerror="this.src='https://media.istockphoto.com/id/1196783935/photo/vietnamese-chunck-cake-banh-chung-tet-holiday.jpg?s=612x612&w=0&k=20&c=6cT3D56tT2O-zJd6C6jJ_w-t_R_u-1_g-m-m-0-0-1'">
                 </div>
                 
-                <div class="tet-col-text">
-                    <h3>🐎 XUÂN BÍNH NGỌ - MÃ ĐÁO THÀNH CÔNG 🌸</h3>
-                    <p class="tet-poem">
-                        "Bánh chưng xanh bên dưa hấu đỏ<br>
-                        Cành mai vàng bên cành đào tươi<br>
-                        Tết năm nay Tiểu đội ta cười<br>
-                        Trực chiến hăng say - Vui chơi hết mình!"
-                    </p>
-                    <div class="tet-message">
-                        <p>Chào mừng các đồng chí đến với <strong>Cổng thông tin Tết 2026</strong>. Đây là nơi anh em Tiểu đội 3 xả hơi sau giờ huấn luyện, đăng ký thi đấu và thử vận may đầu năm.</p>
-                        <p><strong>Nhiệm vụ:</strong> Vui - Khỏe - Đoàn kết - An toàn!</p>
-                    </div>
+                <div class="img-small">
+                    <img src="images/bc2.png" alt="Gói bánh" onerror="this.src='https://media.istockphoto.com/id/1201456578/photo/making-chung-cake.jpg?s=612x612&w=0&k=20&c=u-1-g-m-m-0-0-1'">
+                    <img src="images/bc1.png" alt="Nguyên liệu" onerror="this.src='https://media.istockphoto.com/id/1367683787/photo/decoration-of-lunar-new-year-with-apricot-flower-and-lantern.jpg?s=612x612&w=0&k=20&c=K_z-R_o-m-m-0-0-1'">
                 </div>
             </div>
         </div>
-    </section>
 
-    <section class="container">
-    <h3>🎬 Phim Ngắn: Táo Quân Tiểu Đội</h3>
-    <div class="video-box">
-        <iframe width="100%" height="315" 
-            src="https://www.youtube.com/embed/-0xf-CW4naw" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            allowfullscreen>
-        </iframe>
-    </div>
-    <p><i>(Video demo chương trình văn nghệ cây nhà lá vườn)</i></p>
-</section>
-
-    <section class="container game-section">
-        <h3>🙏 Gieo Quẻ Đầu Năm 🙏</h3>
-        <p>Thành tâm xin quẻ, xem năm nay đen hay đỏ?</p>
-        <div id="que-result" class="hidden" style="display:none;">...</div>
-        <button onclick="xinQue()" class="btn-game">Rút Quẻ Ngay</button>
-    </section>
-
-    <section class="container game-section">
-        <h3>🎡 Vòng Quay "Nhân Phẩm"</h3>
-        <p>Quay đi, đen thôi đỏ quên đi!</p>
-        <div class="wheel-container">
-            <div class="pointer">🔻</div>
-            <div class="wheel" id="vong-quay">
-                <div class="segment" style="--i:1; --clr:#f44336;"><span>Hít đất 20 cái</span></div>
-                <div class="segment" style="--i:2; --clr:#e91e63;"><span>Được mời nước</span></div>
-                <div class="segment" style="--i:3; --clr:#9c27b0;"><span>Hát 1 bài</span></div>
-                <div class="segment" style="--i:4; --clr:#3f51b5;"><span>Miễn trực nhật</span></div>
-                <div class="segment" style="--i:5; --clr:#03a9f4;"><span>Kể 1 bí mật</span></div>
-                <div class="segment" style="--i:6; --clr:#009688;"><span>Chúc Tết cả phòng</span></div>
-                <div class="segment" style="--i:7; --clr:#8bc34a;"><span>Uống 1 ly</span></div>
-                <div class="segment" style="--i:8; --clr:#ffeb3b;"><span>Qua lượt</span></div>
+        <div class="custom-card paper-style">
+            <div class="custom-text">
+                <h3>🧹 3. Dọn Dẹp & Trang Trí Nhà</h3>
+                <p>Quét dọn sạch sẽ để xua đi những điều cũ kỹ, không may mắn của năm cũ. Trang trí hoa mai, hoa đào rực rỡ để đón luồng sinh khí, tài lộc vào nhà.</p>
+            </div>
+            <div class="custom-gallery grid-4">
+                <img src="/images/dd1.png" alt="Lau dọn">
+                <img src="/images/dd2.png" alt="Mua hoa đào">
+                <img src="/images/dd3.png" alt="Treo đèn lồng">
+                <img src="/images/dd4.png" alt="Hoa Mai">
             </div>
         </div>
-        <button onclick="quaySo()" class="btn-game" id="btn-spin">QUAY NGAY</button>
-    </section>
 
-    <section class="container game-section">
-        <h3>🧠 Thử Thách: Ai Hiểu Tiểu Đội Nhất?</h3>
-        <div id="quiz-container">
-            <h4 id="question-text">Đang tải câu hỏi...</h4>
-            <div class="answers-box" id="answers-box"></div>
-            <p id="quiz-feedback"></p>
+        <div class="custom-card paper-style reverse">
+            <div class="custom-text">
+                <h3>🧧 4. Chúc Tết & Mừng Tuổi</h3>
+                <p>Con cháu chúc thọ ông bà cha mẹ, nhận phong bao lì xì đỏ thắm. Đây không chỉ là tiền bạc mà là sự trao gửi may mắn, sức khỏe và niềm vui đầu năm.</p>
+            </div>
+            <div class="custom-gallery grid-4">
+                <img src="/images/mt1.png" alt="Gia đình sum vầy">
+                <img src="/images/mt2.png" alt="Lì xì">
+                <img src="/images/mt3.png" alt="Chúc tết">
+                <img src="/images/mt4.png" alt="Bao lì xì">
+            </div>
         </div>
-        <button onclick="nextQuestion()" class="btn-game" id="btn-next" style="display:none;">Câu Tiếp Theo</button>
+
+        <div class="custom-card paper-style">
+            <div class="custom-text">
+                <h3>👣 5. Tục Xông Đất</h3>
+                <p>Người đầu tiên bước vào nhà sau giao thừa được tin là sẽ mang "vía" tốt. Việc chọn người xông đất hợp tuổi ảnh hưởng đến vận may, tài lộc cả năm của gia chủ.</p>
+            </div>
+            <div class="custom-gallery grid-2">
+                <img src="/images/xn1.png" alt="Vào nhà">
+                <img src="/images/xn2.png" alt="Chào đón">
+            </div>
+        </div>
     </section>
 
-    <div class="container-wide" id="danh-sach-event">
-        <h2 style="color: #FFD700; text-shadow: 2px 2px #000; margin-top: 50px;">🏆 CÁC NỘI DUNG THI ĐẤU CHÍNH THỨC 🏆</h2>
+    
+    <section class="container-wide  am-thuc-layout">
         
-        <div class="event-card">
-            <div class="event-img">
-                <img src="/images/banhchung.jpg" alt="Gói bánh">
-            </div>
-            <div class="event-info">
-                <h3>🫔 Hội Thi: Khéo Tay Gói Bánh</h3>
-                <ul>
-                    <li><strong>🕒 Thời gian:</strong> 14:00 - 28 Tết</li>
-                    <li><strong>📜 Thể lệ:</strong> Đội 3 người. Gói 5 cái bánh chưng vuông vức.</li>
-                    <li><strong>🎁 Giải thưởng:</strong> 1 Thùng bia + Miễn trực nhật 2 ngày.</li>
-                </ul>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeKWRc96cY6JbiYL8mH7BcDxaqn94BAgHDoUQ1ARNezLehUaA/viewform?usp=publish-editor" target="_blank" class="btn-register">ĐĂNG KÝ GÓI BÁNH</a>
+        <div class="at-left-images">
+            <div class="grid-2-col">
+                <img src="/images/at1.png" alt="Bánh Chưng">
+                <img src="/images/at2.png" alt="Bánh Chưng">
+                <img src="/images/at3.png" alt="Bánh Chưng">
+                <img src="/images/at4.png" alt="Bánh Chưng">
+                <img src="/images/at5.png" alt="Bánh Chưng">
+                <img src="/images/at6.png" alt="Bánh Chưng">
             </div>
         </div>
 
-        <div class="event-card">
-            <div class="event-img">
-                <img src="https://img.freepik.com/premium-vector/karaoke-party-background_23-2147506979.jpg" alt="Văn nghệ">
-            </div>
-            <div class="event-info">
-                <h3>🎤 Gala: Gương Mặt Thân Quen</h3>
-                <ul>
-                    <li><strong>🕒 Thời gian:</strong> 19:30 - Đêm Giao Thừa</li>
-                    <li><strong>📜 Thể lệ:</strong> Hát, múa, kịch, tấu hài...</li>
-                    <li><strong>🎁 Giải thưởng:</strong> Bao lì xì 500k nóng hổi.</li>
-                </ul>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeKWRc96cY6JbiYL8mH7BcDxaqn94BAgHDoUQ1ARNezLehUaA/viewform?usp=publish-editor" target="_blank" class="btn-register">ĐĂNG KÝ TIẾT MỤC</a>
-            </div>
+        <div class="at-right-content">
+            <h3>🍲 3. Tinh Hoa Ẩm Thực Tết</h3>
+            <p>Mâm cỗ Tết là sự hòa quyện giữa hương vị truyền thống và tâm linh.</p>
+            
+            <ul class="at-list">
+                <li><strong>Bắc:</strong> Bánh chưng, thịt đông.</li>
+                <li><strong>Trung:</strong> Bánh tét, nem chua.</li>
+                <li><strong>Nam:</strong> Thịt kho tàu, khổ qua.</li>
+            </ul>
+            
+            <p class="at-note">🍬 <strong>Quà Tết:</strong> Mứt, hạt dưa, ô mai...</p>
         </div>
 
-    </div>
+    </section>
+
+   <section class="container tet-change-section">
+        <div class="change-content">
+            <h3>🕰️ Sự Thay Đổi Của Tết: Mất Hay Là Chuyển Hoá?</h3>
+            
+            <div class="text-block">
+                <p>
+                    Trong xã hội hiện đại, Tết Nguyên Đán đang dần có nhiều thay đổi so với trước đây. Nếu như ngày xưa, Tết gắn liền với những nghi lễ cầu kỳ, chuẩn bị kéo dài hàng tháng, thì ngày nay Tết trở nên giản lược hơn: mâm cỗ đơn giản, việc mua sắm tiện lợi, nhiều gia đình chọn du lịch thay vì ở nhà đón Tết. Chính những thay đổi ấy khiến không ít người cho rằng Tết đang dần <em>“mất chất”</em>.
+                </p>
+                
+                <hr class="divider-icon"> <p>
+                    Tuy nhiên, nhìn ở góc độ khác, đó không hẳn là sự mất đi mà là sự <strong>chuyển hoá</strong> để thích nghi với nhịp sống mới. Xã hội phát triển, con người bận rộn hơn, nên những hình thức Tết cũng cần linh hoạt để phù hợp với hoàn cảnh.
+                </p>
+
+                <p class="highlight-text">
+                    "Điều quan trọng không nằm ở việc giữ nguyên mọi phong tục cũ, mà ở việc giữ lại những giá trị cốt lõi của Tết như sum vầy gia đình, lòng biết ơn tổ tiên, sự sẻ chia và hy vọng cho một năm mới tốt đẹp."
+                </p>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="container tet-quiz-section">
+        <h2 class="quiz-title">🎓 THỬ TÀI KIẾN THỨC TẾT 🎓</h2>
+        
+        <div class="final-quiz-box">
+            <button class="final-nav-btn" onclick="changeFinalQuestion(-1)">❮</button>
+
+            <div class="final-quiz-content">
+                <div class="final-quiz-header">
+                    <span id="final-q-number">Câu 1/7</span>
+                </div>
+                
+                <h3 id="final-q-text">Đang tải câu hỏi...</h3>
+                
+                <div class="final-options-grid" id="final-options-area">
+                    </div>
+
+                <div id="final-feedback" class="final-feedback-msg"></div>
+            </div>
+
+            <button class="final-nav-btn" onclick="changeFinalQuestion(1)">❯</button>
+        </div>
+    </section>
+    
+
+       
 
     <footer>
-        <p>Code bởi: [Tên Bạn] - Tiểu Đội 3 🇻🇳</p>
+        <p>Code bởi: Tiểu Đội 3 - Trung Đoàn 12K</p>
     </footer>
 
     <script src="game.js"></script>

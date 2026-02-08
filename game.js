@@ -1,78 +1,174 @@
-// --- TRÒ 1: GIEO QUẺ ---
-const danhSachQue = [
-    "🧧 ĐẠI CÁT: Năm nay được Tiểu đội trưởng lì xì to!",
-    "💔 TÌNH DUYÊN: Người yêu cũ sẽ nhắn tin... đòi nợ.",
-    "👮 SỰ NGHIỆP: Sắp được thăng chức lên... Trực ban trưởng.",
-    "💀 HUNG TIN: Coi chừng bị gác đêm Giao Thừa.",
-    "🌸 MAY MẮN: Ra đường lượm được 2 ngàn.",
-    "🤐 KHẨU NGHIỆP: Bớt chém gió kẻo bị anh em úp sọt."
+/* --- LOGIC CHO PHẦN THỬ TÀI XÔNG ĐẤT --- */
+// Danh sách quà tặng theo yêu cầu
+const phanThuongXongDat = [
+    "👏 1 Tràng pháo tay giòn giã!",
+    "🤝 Được bắt tay với Lớp Trưởng!",
+    "👩‍🏫 Vinh dự bắt tay với Cô Giáo!"
 ];
 
-function xinQue() {
-    var resultBox = document.getElementById("que-result");
-    resultBox.style.display = "block";
-    resultBox.innerHTML = "🎲 Đang lắc... Chờ tí...";
-    setTimeout(function() {
-        var soNgauNhien = Math.floor(Math.random() * danhSachQue.length);
-        resultBox.innerHTML = danhSachQue[soNgauNhien];
-    }, 1000);
-}
+function checkXongDat(answer) {
+    // Ẩn bảng câu hỏi để người dùng không chọn lại
+    document.getElementById('quiz-box').style.display = 'none';
+    
+    // Hiện khu vực kết quả
+    const resultArea = document.getElementById('result-area');
+    const wrongMsg = document.getElementById('wrong-msg');
+    const rightMsg = document.getElementById('right-msg');
+    
+    resultArea.style.display = 'block';
 
-// --- TRÒ 2: VÒNG QUAY ---
-let spinning = false;
-function quaySo() {
-    if (spinning) return;
-    spinning = true;
-    const wheel = document.getElementById("vong-quay");
-    const deg = Math.floor(3600 + Math.random() * 3600); 
-    wheel.style.transform = `rotate(${deg}deg)`;
-    setTimeout(() => {
-        spinning = false;
-        alert("Dừng hình! Thực hiện hình phạt đi đồng chí! 😎");
-    }, 4000); 
-}
-
-// --- TRÒ 3: QUIZ ---
-const boCauHoi = [
-    { q: "Ai là người tắm lâu nhất Tiểu đội?", a: ["Đồng chí A", "Đồng chí B", "Đồng chí C"], correct: 1 },
-    { q: "Câu cửa miệng của Tiểu đội trưởng là gì?", a: ["Nghiêm!", "Tác phong lên", "Hết giờ!"], correct: 0 },
-    { q: "Đặc sản bếp ăn đơn vị?", a: ["Cá khô", "Rau luộc", "Canh đại dương"], correct: 2 }
-];
-let currentQ = 0;
-
-function loadQuestion() {
-    if (currentQ >= boCauHoi.length) {
-        document.getElementById("quiz-container").innerHTML = "<h4>🎉 Hết câu hỏi!</h4>";
-        document.getElementById("btn-next").style.display = "none";
-        return;
-    }
-    const qData = boCauHoi[currentQ];
-    document.getElementById("question-text").innerText = "Câu " + (currentQ + 1) + ": " + qData.q;
-    const answersDiv = document.getElementById("answers-box");
-    answersDiv.innerHTML = "";
-    qData.a.forEach((ans, index) => {
-        const btn = document.createElement("button");
-        btn.innerText = ans; btn.className = "btn-answer";
-        btn.onclick = () => checkAnswer(index, qData.correct, btn);
-        answersDiv.appendChild(btn);
-    });
-    document.getElementById("quiz-feedback").innerText = "";
-    document.getElementById("btn-next").style.display = "none";
-}
-
-function checkAnswer(userIndex, correctIndex, btnElement) {
-    const allBtns = document.querySelectorAll(".btn-answer");
-    allBtns.forEach(b => b.disabled = true);
-    if (userIndex === correctIndex) {
-        btnElement.classList.add("correct");
-        document.getElementById("quiz-feedback").innerText = "✅ Chuẩn!";
+    if (answer === 'B') {
+        // Nếu đúng (Đáp án B)
+        rightMsg.style.display = 'block';
+        wrongMsg.style.display = 'none';
     } else {
-        btnElement.classList.add("wrong");
-        allBtns[correctIndex].classList.add("correct");
-        document.getElementById("quiz-feedback").innerText = "❌ Sai bét!";
+        // Nếu sai
+        wrongMsg.style.display = 'block';
+        rightMsg.style.display = 'none';
     }
-    document.getElementById("btn-next").style.display = "inline-block";
 }
 
-function nextQuestion() { currentQ++; loadQuestion(); }
-window.onload = loadQuestion;
+function moQuaXongDat() {
+    const giftText = document.getElementById('gift-result');
+    const btn = document.getElementById('btn-mo-qua');
+    
+    // Tạo hiệu ứng random nhảy chữ
+    let count = 0;
+    btn.disabled = true; // Khóa nút không cho bấm liên tục
+    btn.innerText = "Đang bốc quẻ...";
+
+    const interval = setInterval(() => {
+        // Lấy ngẫu nhiên 1 món quà để hiển thị nhấp nháy
+        const randomIndex = Math.floor(Math.random() * phanThuongXongDat.length);
+        giftText.innerText = phanThuongXongDat[randomIndex];
+        count++;
+
+        // Sau 20 lần nháy thì dừng lại ở kết quả cuối cùng
+        if (count > 20) {
+            clearInterval(interval);
+            // Chọn quà chốt hạ
+            const finalGift = phanThuongXongDat[Math.floor(Math.random() * phanThuongXongDat.length)];
+            giftText.innerText = "🎁 " + finalGift + " 🎁";
+            giftText.style.fontSize = "1.8em";
+            giftText.style.color = "#fff";
+            btn.style.display = "none"; // Ẩn nút đi
+        }
+    }, 100); // Tốc độ nháy 100ms
+}
+// Hàm xử lý khi bấm nút "Thử Lại"
+function thuLai() {
+    // 1. Ẩn khu vực kết quả đi
+    document.getElementById('result-area').style.display = 'none';
+    
+    // 2. Hiện lại bảng câu hỏi
+    document.getElementById('quiz-box').style.display = 'block';
+    
+    // 3. (Tùy chọn) Có thể thêm hiệu ứng cuộn lại lên phần câu hỏi nếu cần
+    document.getElementById('quiz-box').scrollIntoView({ behavior: 'smooth' });
+}
+/* --- LOGIC CHO QUIZ TỔNG KẾT (7 CÂU) - ĐÃ TÁCH BIỆT --- */
+
+const finalQuizData = [
+    {
+        question: "Câu 1: Tết Nguyên Đán được tính theo loại lịch nào?",
+        answers: ["A. Dương lịch", "B. Âm lịch", "C. Cả hai loại trên"],
+        correct: 1
+    },
+    {
+        question: "Câu 2: Nghi lễ tiễn Ông Công, Ông Táo về trời diễn ra vào ngày nào?",
+        answers: ["A. 23 tháng Chạp", "B. 30 Tết", "C. Mùng 1 Tết"],
+        correct: 0
+    },
+    {
+        question: "Câu 3: Theo phong tục, ai là người nên xông đất đầu năm để mang lại may mắn?",
+        answers: ["A. Người có tuổi hợp với gia chủ", "B. Người bước vào nhà đầu tiên sau giao thừa", "C. Cả A và B đều đúng"],
+        correct: 2
+    },
+    {
+        question: "Câu 4: Mâm ngũ quả miền Nam thường có 5 loại quả nào?",
+        answers: ["A. Chuối, bưởi, đào, hồng, quýt", "B. Mãng cầu, dừa, đu đủ, xoài, sung", "C. Dưa hấu, táo, cam, nho, chuối"],
+        correct: 1
+    },
+    {
+        question: "Câu 5: Loại bánh truyền thống không thể thiếu ở miền Bắc dịp Tết là gì?",
+        answers: ["A. Bánh tét", "B. Bánh chưng", "C. Bánh giầy"],
+        correct: 1
+    },
+    {
+        question: "Câu 6: Câu đối đỏ và ông đồ là nét văn hóa đặc trưng của Tết ở đâu?",
+        answers: ["A. Đình, chùa, phố ông đồ", "B. Chỉ ở miền Nam", "C. Chỉ ở nhà thờ họ"],
+        correct: 0
+    },
+    {
+        question: "Câu 7: Ý nghĩa chính của việc lì xì (mừng tuổi) đầu năm là gì?",
+        answers: ["A. Khoe tiền", "B. Trả nợ", "C. Chúc may mắn, sức khỏe và lộc xuân"],
+        correct: 2
+    }
+];
+
+let fCurrentIdx = 0;
+let fIsLocked = false;
+
+// Hàm hiển thị câu hỏi
+function renderFinalQuestion() {
+    const q = finalQuizData[fCurrentIdx];
+    
+    // Cập nhật số câu và nội dung
+    document.getElementById('final-q-number').innerText = `Câu ${fCurrentIdx + 1}/${finalQuizData.length}`;
+    document.getElementById('final-q-text').innerText = q.question;
+    
+    // Xóa đáp án cũ
+    const optionsDiv = document.getElementById('final-options-area');
+    optionsDiv.innerHTML = '';
+    document.getElementById('final-feedback').innerText = '';
+    fIsLocked = false;
+
+    // Tạo nút đáp án mới
+    q.answers.forEach((ans, index) => {
+        const btn = document.createElement('button');
+        btn.className = 'final-btn'; // Class riêng của khối này
+        btn.innerText = ans;
+        btn.onclick = () => checkFinalAnswer(index, btn);
+        optionsDiv.appendChild(btn);
+    });
+}
+
+// Hàm kiểm tra đáp án
+function checkFinalAnswer(selectedIndex, btnElement) {
+    if (fIsLocked) return;
+    fIsLocked = true;
+
+    const correctIndex = finalQuizData[fCurrentIdx].correct;
+    // Chỉ tìm các nút trong khu vực đáp án của khối này
+    const allBtns = document.getElementById('final-options-area').querySelectorAll('.final-btn');
+    const feedback = document.getElementById('final-feedback');
+
+    if (selectedIndex === correctIndex) {
+        // ĐÚNG
+        btnElement.classList.add('correct');
+        feedback.innerHTML = "🎉 <strong>Chính xác!</strong>";
+        feedback.style.color = "#4CAF50";
+    } else {
+        // SAI
+        btnElement.classList.add('wrong'); // Đỏ nút sai
+        if (allBtns[correctIndex]) {
+            allBtns[correctIndex].classList.add('correct'); // Xanh nút đúng
+        }
+        
+        // Hiện đáp án đúng
+        const rightText = finalQuizData[fCurrentIdx].answers[correctIndex];
+        feedback.innerHTML = `😅 <strong>Sai rồi!</strong> Đáp án là: <br>${rightText}`;
+        feedback.style.color = "#FFD700";
+    }
+}
+
+// Hàm chuyển câu
+function changeFinalQuestion(direction) {
+    fCurrentIdx += direction;
+    if (fCurrentIdx < 0) fCurrentIdx = finalQuizData.length - 1;
+    if (fCurrentIdx >= finalQuizData.length) fCurrentIdx = 0;
+    renderFinalQuestion();
+}
+
+// Khởi chạy
+document.addEventListener('DOMContentLoaded', renderFinalQuestion);

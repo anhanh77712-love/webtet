@@ -34,64 +34,86 @@ h2 { font-size: 1.5em; color: #fff; }
     padding: 0 15px;
 }
 
-/* --- CSS CHO TRÒ CHƠI --- */
-.btn-game {
-    background-color: #FFD700;
-    color: #8B0000;
-    border: none;
-    padding: 15px 30px;
-    font-size: 20px;
+/* --- CSS CHO DANH SÁCH THÀNH VIÊN (HEADER) --- */
+
+.list-member {
+    margin-top: 25px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.3); /* Nền tối mờ để làm nổi bật tên */
+    border-radius: 15px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    backdrop-filter: blur(5px); /* Hiệu ứng mờ kính phía sau */
+}
+
+.member-title {
+    color: #FFD700;
+    font-size: 1.2em;
     font-weight: bold;
-    border-radius: 50px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px #000;
+    letter-spacing: 1px;
+}
+
+.member-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Khoảng cách giữa các tên */
+}
+
+.member-tag {
+    background: linear-gradient(135deg, #FFD700 0%, #FDB931 50%, #FFD700 100%); /* Màu vàng kim loại */
+    color: #8B0000; /* Chữ đỏ đậm */
+    padding: 8px 15px;
+    border-radius: 20px; /* Bo tròn hình viên thuốc */
+    font-weight: bold;
+    font-size: 0.95em;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.5); /* Tạo khối 3D */
+    border: 1px solid #cfaa02;
     cursor: pointer;
-    transition: 0.3s;
-    margin-top: 15px;
-}
-.btn-game:hover { background-color: #fff; transform: scale(1.1); }
-
-#que-result {
-    font-size: 24px; color: #fff; background: #000;
-    padding: 20px; margin: 20px 0; border-radius: 10px;
-    display: none; animation: fadeIn 1s;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    white-space: nowrap; /* Không cho tên bị ngắt dòng */
+    position: relative;
+    overflow: hidden;
 }
 
-/* Vòng quay */
-.wheel-container {
-    position: relative; width: 300px; height: 300px;
-    margin: 20px auto; overflow: hidden; border-radius: 50%;
-    border: 5px solid #fff; box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-.wheel {
-    width: 100%; height: 100%; border-radius: 50%;
-    position: relative; transition: transform 4s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-}
-.segment {
-    position: absolute; width: 50%; height: 50%;
-    transform-origin: bottom right;
-    transform: rotate(calc(45deg * var(--i)));
-    background-color: var(--clr);
-    display: flex; justify-content: center; align-items: center;
-    clip-path: polygon(0 0, 100% 0, 100% 100%);
-}
-.segment span {
-    position: absolute; transform: rotate(45deg);
-    margin-top: 50px; margin-left: 50px;
-    font-size: 14px; font-weight: bold; color: #fff; width: 100px;
-}
-.pointer {
-    position: absolute; top: -10px; left: 50%;
-    transform: translateX(-50%); z-index: 10; font-size: 30px;
+/* Hiệu ứng lấp lánh nhẹ trên thẻ */
+.member-tag::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: 0.5s;
 }
 
-/* Quiz */
-.answers-box { display: flex; flex-direction: column; gap: 10px; margin-top: 15px; }
-.btn-answer {
-    background-color: #fff; color: #333; border: 2px solid #FFD700;
-    padding: 10px; border-radius: 8px; cursor: pointer; font-size: 16px;
+/* Hiệu ứng khi di chuột vào */
+.member-tag:hover {
+    transform: translateY(-5px) scale(1.05); /* Nảy lên và phóng to nhẹ */
+    box-shadow: 0 8px 15px rgba(255, 215, 0, 0.4); /* Bóng phát sáng */
+    background: #fff; /* Đổi nền trắng */
+    color: #d32f2f; /* Đổi chữ đỏ tươi */
+    z-index: 10;
 }
-.btn-answer:hover { background-color: #FFD700; color: #8B0000; }
-.correct { background-color: #4CAF50 !important; color: white !important; }
-.wrong { background-color: #f44336 !important; color: white !important; }
+
+.member-tag:hover::before {
+    left: 100%; /* Chạy vệt sáng qua */
+}
+
+/* Responsive cho điện thoại: Giảm cỡ chữ chút xíu */
+@media (max-width: 600px) {
+    .member-tag {
+        font-size: 0.85em;
+        padding: 6px 12px;
+    }
+}
+
+
+
 
 /* --- CSS CHO THẺ SỰ KIỆN (MỚI) --- */
 .event-card {
@@ -136,90 +158,902 @@ h2 { font-size: 1.5em; color: #fff; }
     100% { transform: translate(100px, 100vh) rotate(360deg); opacity: 0; }
 }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-/* --- CSS CHO KHỐI GIỚI THIỆU TẾT --- */
-.tet-intro {
-    margin-top: 20px; /* Kéo lênm 1 chút đè lên header cho đẹp */
-    position: relative;
-    z-index: 10;
-}
+/* --- CẬP NHẬT CSS CHO PHẦN GIỚI THIỆU TẾT MỚI --- */
 
 .tet-card-highlight {
-    background: linear-gradient(135deg, #fff 0%, #ffebee 100%); /* Màu trắng hồng */
-    border-radius: 20px;
-    padding: 10px;
-    box-shadow: 0 10px 25px rgba(255, 215, 0, 0.4); /* Bóng màu vàng kim */
+    background: #fffbe6; /* Màu kem sáng */
     border: 3px solid #b71c1c;
-}
-
-.tet-row {
-    display: flex;
-    flex-wrap: wrap; /* Tự xuống dòng trên điện thoại */
-    align-items: center;
-}
-
-.tet-col-img {
-    flex: 1;
-    min-width: 200px;
-    padding: 10px;
-}
-
-.tet-col-img img {
-    width: 100%;
     border-radius: 15px;
-    border: 2px solid #FFD700;
-    box-shadow: 5px 5px 0 #b71c1c;
-    animation: pulse 2s infinite; /* Hiệu ứng nhịp đập */
-}
-
-.tet-col-text {
-    flex: 2;
     padding: 20px;
-    text-align: left;
-}
-
-.tet-col-text h3 {
-    color: #d32f2f;
-    font-size: 1.8em;
-    margin-top: 0;
-    text-transform: uppercase;
-    border-bottom: 2px dashed #FFD700;
-    display: inline-block;
-}
-
-.tet-poem {
-    font-style: italic;
-    color: #b71c1c;
-    font-weight: bold;
-    background: rgba(255, 215, 0, 0.2);
-    padding: 10px;
-    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     text-align: center;
+}
+
+.tet-header-text h3 {
+    color: #d32f2f;
+    font-size: 2em;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 0 #FFD700;
+}
+
+.intro-emotional {
+    font-size: 1.2em;
+    font-style: italic;
+    color: #555;
+    margin-bottom: 15px;
     line-height: 1.6;
 }
 
-.tet-message p {
+/* Gallery 3 ảnh */
+.tet-gallery {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+    justify-content: center;
+}
+
+.gallery-item {
+    flex: 1;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 2px solid #FFD700;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05); /* Phóng to nhẹ khi di chuột */
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 150px; /* Chiều cao cố định để ảnh đều nhau */
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-item .caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(183, 28, 28, 0.8); /* Nền đỏ trong suốt */
+    color: #FFD700;
+    padding: 5px 0;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+/* Lưới thông tin 4 ô */
+.tet-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 cột */
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.info-box {
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 5px solid #d32f2f; /* Viền trái màu đỏ */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: left;
+}
+
+.info-box h4 {
+    color: #b71c1c;
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 5px;
+}
+
+.info-box p {
+    font-size: 0.95em;
     color: #333;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.tet-footer-text {
+    margin-top: 25px;
+    padding-top: 15px;
+    border-top: 2px solid #FFD700;
+    font-weight: bold;
+    color: #b71c1c;
     font-size: 1.1em;
-    margin-bottom: 10px;
 }
 
-.tet-message strong {
-    color: #d32f2f;
-}
-
-/* Hiệu ứng nhịp đập cho ảnh */
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.02); }
-    100% { transform: scale(1); }
-}
-
-/* Chỉnh cho điện thoại: Ảnh lên trên, chữ xuống dưới */
+/* Responsive cho điện thoại */
 @media (max-width: 600px) {
-    .tet-row {
+    .tet-gallery {
+        flex-direction: column; /* Ảnh xếp dọc trên đt */
+    }
+    .gallery-item img {
+        height: 200px; /* Ảnh cao hơn chút trên đt */
+    }
+    .tet-info-grid {
+        grid-template-columns: 1fr; /* Thông tin xếp dọc 1 cột */
+    }
+}
+
+/* --- CSS CHO KHỐI THỬ TÀI XÔNG ĐẤT --- */
+.quiz-box {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 15px;
+    border: 3px solid #d32f2f;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.question-text {
+    color: #b71c1c;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Mặc định 1 cột */
+    gap: 10px;
+}
+
+.btn-option {
+    background: #fff;
+    border: 2px solid #b71c1c;
+    color: #b71c1c;
+    padding: 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: 0.3s;
+    text-align: left;
+}
+
+.btn-option:hover {
+    background: #d32f2f;
+    color: #FFD700;
+}
+
+/* --- TRANG TRÍ PHẦN RÚT QUẺ (XÔNG ĐẤT) --- */
+
+/* 1. Hộp chứa quà (Làm nền tối để nút nổi bật) */
+.lucky-draw-box {
+    background: radial-gradient(circle, #8B0000 0%, #500000 100%); /* Nền đỏ đen có chiều sâu */
+    border: 3px dashed #FFD700; /* Viền vàng nét đứt */
+    border-radius: 20px;
+    padding: 30px 20px;
+    margin-top: 25px;
+    box-shadow: inset 0 0 30px rgba(0,0,0,0.6); /* Bóng đổ vào trong */
+    position: relative;
+    text-align: center;
+}
+
+/* Text hiển thị kết quả (???) */
+#gift-result {
+    font-size: 3em; /* Chữ to đùng */
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 0 0 10px #FFD700, 2px 2px 0 #d32f2f;
+    margin-bottom: 30px;
+    min-height: 60px;
+    font-family: 'Pangolin', cursive;
+    animation: floatText 2s ease-in-out infinite;
+}
+
+/* 2. NÚT "RÚT QUẺ NGAY" SIÊU CẤP (Premium Style) */
+#btn-mo-qua {
+    position: relative;
+    overflow: hidden;
+    /* Màu nền Gradient đỏ sang trọng */
+    background: linear-gradient(to bottom, #ff5252 0%, #b71c1c 50%, #8b0000 100%);
+    /* Viền vàng kim loại */
+    border: 4px solid #FFD700;
+    border-radius: 50px; /* Bo tròn viên thuốc */
+    
+    /* Chữ Vàng Kim Phát Sáng */
+    color: #FFD700;
+    font-size: 1.5em;
+    font-weight: 900;
+    text-transform: uppercase;
+    padding: 15px 50px;
+    cursor: pointer;
+    
+    /* Bóng đổ 3D cực mạnh */
+    box-shadow: 0 10px 0 #500000, /* Phần đế nút (tạo độ dày) */
+                0 10px 20px rgba(0,0,0,0.4), /* Bóng râm dưới đất */
+                inset 0 2px 0 rgba(255,255,255,0.5); /* Bóng sáng đỉnh nút */
+                
+    transition: all 0.1s; /* Chuyển động nhanh khi bấm */
+}
+
+/* Hiệu ứng vệt sáng quét qua (Shine) */
+#btn-mo-qua::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -100%;
+    width: 50%;
+    height: 200%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,0) 100%);
+    transform: rotate(30deg);
+    animation: shine 3s infinite; /* Chạy liên tục mỗi 3s */
+}
+
+/* Khi di chuột vào */
+#btn-mo-qua:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 0 #500000, 
+                0 15px 30px rgba(255, 215, 0, 0.4); /* Bóng phát sáng vàng */
+    filter: brightness(1.1); /* Sáng hơn chút */
+}
+
+/* Khi bấm nút xuống (Active) */
+#btn-mo-qua:active {
+    transform: translateY(10px); /* Lún xuống bằng đúng độ dày đế nút */
+    box-shadow: 0 0 0 #500000, /* Mất phần đế */
+                inset 0 0 10px rgba(0,0,0,0.5);
+}
+
+/* --- CÁC KEYFRAMES CHUYỂN ĐỘNG --- */
+
+/* Vệt sáng chạy */
+@keyframes shine {
+    0% { left: -100%; opacity: 0; }
+    20% { left: 200%; opacity: 1; }
+    100% { left: 200%; opacity: 0; }
+}
+
+/* Chữ ??? bay bay */
+@keyframes floatText {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Nút Thử Lại (Style mới) */
+.btn-retry {
+    background-color: #fff;
+    color: #c62828; /* Chữ đỏ */
+    border: 2px solid #c62828; /* Viền đỏ */
+    padding: 10px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 30px; /* Bo tròn hình viên thuốc */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Khoảng cách giữa icon và chữ */
+    box-shadow: 0 4px 0 #ef9a9a; /* Bóng nút tạo độ nổi */
+}
+
+/* Hiệu ứng khi di chuột vào nút */
+.btn-retry:hover {
+    background-color: #c62828;
+    color: #fff; /* Đổi thành nền đỏ chữ trắng */
+    transform: translateY(2px); /* Nút lún xuống nhẹ */
+    box-shadow: 0 2px 0 #b71c1c;
+}
+
+/* Hiệu ứng rung lắc khi sai */
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+    40% {transform: translateY(-10px);}
+    60% {transform: translateY(-5px);}
+}
+
+/* --- CSS GIAO DIỆN MỚI CHO PHẦN PHONG TỤC --- */
+
+/* 1. Nền tổng thể: Màu đỏ nhung với họa tiết chấm bi chìm (Polka Dot Pattern) */
+.tet-pattern-bg {
+    background-color: #8B0000;
+    /* Tạo họa tiết chấm bi mờ mờ sang trọng */
+    background-image: radial-gradient(#9B111E 15%, transparent 16%),
+                      radial-gradient(#9B111E 15%, transparent 16%);
+    background-size: 20px 20px;
+    background-position: 0 0, 10px 10px;
+    padding: 40px 10px;
+}
+
+.section-title {
+    color: #FFD700; /* Vàng kim */
+    font-size: 2.5em;
+    text-shadow: 2px 2px 0px #800000, 4px 4px 0px rgba(0,0,0,0.5); /* Bóng đổ dày tạo khối */
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.section-desc {
+    color: #fff;
+    font-size: 1.2em;
+    margin-bottom: 50px;
+    font-weight: normal;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* 2. Thẻ Phong Tục (Style Giấy Điệp) */
+.custom-card.paper-style {
+    display: flex;
+    /* Màu kem sữa / Giấy cũ -> Cực kỳ dễ đọc chữ */
+    background: linear-gradient(to bottom, #FFFBE6, #FFF8E1); 
+    margin-bottom: 50px;
+    border-radius: 15px;
+    overflow: hidden;
+    /* Viền vàng kim loại */
+    border: 2px solid #DAA520;
+    /* Bóng đổ mềm */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.4); 
+    flex-direction: row;
+    transition: transform 0.3s;
+}
+
+.custom-card.paper-style:hover {
+    transform: translateY(-5px); /* Hiệu ứng nổi lên khi di chuột */
+}
+
+.custom-card.paper-style.reverse {
+    flex-direction: row-reverse;
+}
+
+/* 3. Phần Nội Dung Chữ (Tối ưu hóa khả năng đọc) */
+.custom-text {
+    flex: 1;
+    padding: 40px; /* Tăng khoảng cách lề cho thoáng */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+}
+
+.custom-text h3 {
+    color: #C62828; /* Đỏ gạch đậm - Nổi bật trên nền kem */
+    font-size: 1.8em;
+    font-weight: bold;
+    border-bottom: 3px solid #DAA520; /* Gạch chân vàng */
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.custom-text p {
+    font-size: 1.2em; /* Chữ to hơn */
+    color: #4E342E; /* Màu nâu đất đậm (Dark Brown) -> Dịu mắt hơn màu đen tuyền */
+    line-height: 1.8; /* Khoảng cách dòng rộng -> Dễ đọc */
+    font-weight: 500;
+}
+
+/* 4. Phần Gallery Ảnh */
+.custom-gallery {
+    flex: 1.3;
+    padding: 15px;
+    background: rgba(183, 28, 28, 0.1); /* Nền đỏ rất nhạt lót dưới ảnh */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.custom-gallery img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #fff; /* Viền trắng cho ảnh sạch sẽ */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+}
+
+.custom-gallery img:hover {
+    transform: scale(1.05);
+    z-index: 5;
+    border-color: #FFD700; /* Hover đổi viền vàng */
+}
+
+.grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 160px 160px;
+    gap: 12px;
+}
+
+.grid-3 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 350px !important; /* Chiều cao cố định bắt buộc */
+    width: 100%;
+}
+
+.grid-3 .img-large {
+    flex: 6; /* Ảnh lớn chiếm 60% chiều cao */
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px;
+    position: relative;
+}
+
+.grid-3 .img-small {
+    flex: 4; /* Hàng ảnh nhỏ chiếm 40% chiều cao */
+    display: flex;
+    gap: 10px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.grid-3 .img-small img {
+    flex: 1; /* Chia đều không gian cho 2 ảnh nhỏ */
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 332px;
+    gap: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .custom-card.paper-style, .custom-card.paper-style.reverse {
         flex-direction: column;
     }
-    .tet-col-text {
+    .custom-text { padding: 25px; }
+    .grid-4, .grid-2 { grid-template-rows: 130px 130px; }
+    .grid-3 { height: auto; }
+    .grid-3 .img-large { height: 180px; }
+    .grid-3 .img-small { height: 120px; }
+    .grid-2 { grid-template-rows: 200px; }
+}
+
+/* --- ẩm thực --- */
+
+/* 1. Khung bao ngoài (Container) */
+.am-thuc-layout {
+    display: flex;             /* Sắp xếp ngang */
+    align-items: center;       /* Căn giữa theo chiều dọc */
+    justify-content: space-between;
+    gap: 30px;
+    padding: 35px;             /* Tăng padding cho thoáng */
+    margin-bottom: 50px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5); /* Bóng đổ sâu hơn */
+
+    /* --- THAY ĐỔI GIAO DIỆN TẠI ĐÂY --- */
+    background-color: #8B0000; /* Nền đỏ sẫm sang trọng */
+    border: 4px solid #FFD700; /* Viền vàng kim nổi bật */
+    border-radius: 25px;       /* Bo góc tròn mềm mại */
+    color: #fff;               /* Đổi màu chữ sang trắng để dễ đọc trên nền đỏ */
+}
+
+/* 2. Cột Trái: Chứa Hình Ảnh */
+.at-left-images {
+    flex: 1.1;
+    width: 100%;
+}
+
+/* Lưới 2 ảnh 1 hàng */
+.grid-2-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.grid-2-col img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 10px;
+    /* Đổi viền ảnh sang màu vàng cho đồng bộ */
+    border: 2px solid #FFD700; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+
+.grid-2-col img:hover {
+    transform: scale(1.08);
+    z-index: 10;
+    box-shadow: 0 8px 16px rgba(255, 215, 0, 0.4); /* Bóng sáng vàng khi hover */
+    border-color: #fff; /* Viền chuyển trắng khi hover */
+}
+
+/* 3. Cột Phải: Chứa Nội Dung (Đã điều chỉnh màu sắc) */
+.at-right-content {
+    flex: 1;
+    text-align: left;
+}
+
+.at-right-content h3 {
+    color: #FFD700;       /* Tiêu đề màu vàng kim */
+    font-size: 2em;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 3px dashed #FFD700; /* Gạch chân vàng */
+    display: inline-block;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.at-right-content p {
+    color: #eee;          /* Đoạn văn màu trắng ngà */
+    font-size: 1.15em;
+    line-height: 1.6;
+}
+
+/* Danh sách món ăn */
+.at-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    /* Nền tối bán trong suốt để làm nổi bật chữ */
+    background: rgba(0, 0, 0, 0.25); 
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.at-list li {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #fff;          /* Chữ danh sách màu trắng */
+    border-bottom: 1px dotted rgba(255, 215, 0, 0.5);
+    padding-bottom: 8px;
+}
+
+.at-list li:last-child {
+    border-bottom: none;
+}
+
+.at-list strong {
+    color: #FFD700;       /* Tên miền (Bắc, Trung, Nam) màu vàng */
+}
+
+.at-note {
+    font-weight: bold;
+    color: #FFD700;       /* Ghi chú màu vàng */
+    font-size: 1.1em;
+    margin-top: 15px;
+    display: block;
+}
+
+/* 4. Responsive (Điện thoại) */
+@media (max-width: 768px) {
+    .am-thuc-layout {
+        flex-direction: column;
+        padding: 25px;
+        gap: 25px;
+    }
+    
+    .at-right-content {
         text-align: center;
     }
+    
+    .at-list {
+        text-align: left;
+    }
+}
+
+/* --- CSS CHO KHỐI "SỰ THAY ĐỔI CỦA TẾT" --- */
+
+.tet-change-section {
+    /* Phong cách Khung Gấm Đỏ Viền Vàng (Giống khối Ẩm Thực) */
+    background-color: #8B0000;
+    border: 4px solid #FFD700;
+    border-radius: 25px;
+    padding: 40px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    color: #fff;
+    text-align: center; /* Căn giữa toàn bộ nội dung */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hiệu ứng hoa văn nền mờ (Tạo chiều sâu) */
+.tet-change-section::before {
+    content: '🌸';
+    position: absolute;
+    top: -20px; left: -20px;
+    font-size: 150px;
+    opacity: 0.1;
+    transform: rotate(-30deg);
+}
+
+.tet-change-section::after {
+    content: '🌸';
+    position: absolute;
+    bottom: -20px; right: -20px;
+    font-size: 150px;
+    opacity: 0.1;
+    transform: rotate(30deg);
+}
+
+.change-content h3 {
+    color: #FFD700;
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 4px #000;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Định dạng đoạn văn bản */
+.text-block {
+    max-width: 900px;
+    margin: 0 auto; /* Căn giữa khối văn bản */
+    font-size: 1.15em;
+    line-height: 1.8; /* Khoảng cách dòng rộng cho dễ đọc */
+    color: #f0f0f0;
+}
+
+.text-block p {
+    margin-bottom: 20px;
+    text-align: justify; /* Căn đều 2 bên cho trang trọng */
+}
+
+/* Chữ in nghiêng nhấn mạnh */
+.text-block em {
+    color: #FFD700;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* Đường kẻ trang trí ở giữa */
+.divider-icon {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 215, 0, 0), rgba(255, 215, 0, 1), rgba(255, 215, 0, 0));
+    margin: 30px 0;
+}
+
+/* Đoạn kết luận (Highlight) */
+.highlight-text {
+    background: rgba(0, 0, 0, 0.2); /* Nền tối nhẹ làm nổi bật */
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 5px solid #FFD700; /* Viền vàng bên trái */
+    font-weight: 500;
+    font-style: italic;
+    margin-top: 10px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+}
+
+/* Responsive trên điện thoại */
+@media (max-width: 768px) {
+    .tet-change-section {
+        padding: 20px;
+    }
+    
+    .change-content h3 {
+        font-size: 1.5em;
+    }
+    
+    .text-block p {
+        text-align: left; /* Trên đt để căn trái cho dễ đọc hơn */
+        font-size: 1em;
+    }
+}
+
+/* --- 1. Cấu hình khung chứa chính --- */
+.tet-quiz-section {
+    margin: 60px auto;
+    text-align: center;
+    padding: 0 15px;
+}
+
+.quiz-title {
+    color: #FFD700; /* Vàng kim */
+    font-size: 2.5em;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 #8B0000, 0 0 20px rgba(255, 215, 0, 0.4);
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/* --- 2. Hộp Quiz (Box chính) --- */
+.final-quiz-box {
+    /* Nền Gradient Đỏ sang trọng */
+    background: linear-gradient(135deg, #a00000 0%, #800000 50%, #600000 100%);
+    border: 4px solid #FFD700;
+    border-radius: 25px;
+    padding: 40px;
+    
+    /* Căn chỉnh bố cục: Nút trái - Nội dung - Nút phải */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    /* Hiệu ứng bóng đổ sâu */
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 0 30px rgba(0,0,0,0.3);
+    min-height: 500px; /* Chiều cao tối thiểu để không bị nhảy khung */
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- 3. Phần nội dung ở giữa --- */
+.final-quiz-content {
+    flex: 1; /* Chiếm toàn bộ không gian còn lại */
+    padding: 0 40px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Huy hiệu số câu hỏi (Câu 1/7) */
+#final-q-number {
+    display: inline-block;
+    background-color: #FFD700;
+    color: #8B0000;
+    padding: 8px 25px;
+    border-radius: 50px;
+    font-weight: 800;
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+/* Nội dung câu hỏi */
+#final-q-text {
+    color: #fff;
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 35px;
+    min-height: 70px; /* Giữ chỗ cho câu hỏi dài */
+    line-height: 1.5;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* --- 4. Khu vực các nút đáp án --- */
+.final-options-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Khoảng cách giữa các đáp án */
+    width: 100%;
+}
+
+/* Style cho các nút đáp án (Được JS tạo ra) */
+/* Lưu ý: JS của bạn cần tạo button có class="final-btn" hoặc style trực tiếp cho button trong div này */
+.final-options-grid button, .final-btn {
+    background: #fff;
+    color: #8B0000;
+    border: 3px solid transparent;
+    padding: 15px 25px;
+    border-radius: 15px;
+    font-size: 1.2em;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: left; /* Căn trái văn bản cho dễ đọc */
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    width: 100%; /* Full chiều rộng */
+}
+
+/* Hiệu ứng khi di chuột vào đáp án */
+.final-options-grid button:hover, .final-btn:hover {
+    background-color: #FFD700;
+    color: #8B0000;
+    transform: translateY(-3px); /* Nổi lên nhẹ */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+    border-color: #fff;
+}
+
+/* Style cho đáp án ĐÚNG/SAI (JS sẽ thêm class này) */
+.final-btn.correct {
+    background-color: #2e7d32 !important; /* Xanh lá */
+    color: white !important;
+    border-color: #fff !important;
+}
+
+.final-btn.wrong {
+    background-color: #c62828 !important; /* Đỏ */
+    color: white !important;
+    border-color: #fff !important;
+    opacity: 0.7;
+}
+
+/* --- 5. Thông báo kết quả --- */
+.final-feedback-msg {
+    margin-top: 25px;
+    font-size: 1.3em;
+    font-weight: bold;
+    min-height: 40px;
+    color: #FFD700;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+/* --- 6. Nút điều hướng (Mũi tên 2 bên) --- */
+.final-nav-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid #FFD700;
+    background: rgba(0, 0, 0, 0.2);
+    color: #FFD700;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* Không bị co lại */
+}
+
+.final-nav-btn:hover {
+    background: #FFD700;
+    color: #8B0000;
+    transform: scale(1.15); /* Phóng to khi hover */
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+}
+
+/* --- 7. Responsive: Chỉnh cho điện thoại --- */
+@media (max-width: 768px) {
+    .final-quiz-box {
+        flex-direction: column; /* Xếp dọc các phần tử */
+        padding: 25px 15px;
+        min-height: auto;
+    }
+
+    .final-quiz-content {
+        padding: 0;
+        width: 100%;
+        margin-bottom: 20px;
+        order: 1; /* Đưa nội dung lên đầu */
+    }
+    
+    /* Đưa 2 nút điều hướng xuống dưới cùng và xếp ngang */
+    .final-nav-btn {
+        order: 2; 
+        margin: 10px 15px;
+        display: inline-flex;
+    }
+    
+    /* Chỉnh cỡ chữ nhỏ lại chút trên đt */
+    #final-q-text { font-size: 1.3em; }
+    .final-options-grid button { font-size: 1em; padding: 12px; }
+}
+/* --- SỬA LỖI 2 VIỀN (CLEAN FIX) --- */
+
+/* 1. Xóa sạch viền và nền của thẻ bao ngoài cùng */
+.tet-quiz-section {
+    background: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 20px 0; /* Chỉ giữ lại khoảng cách trên dưới */
+}
+
+/* 2. Chỉ giữ lại viền cho chiếc hộp bên trong */
+.final-quiz-box {
+    /* Đảm bảo chỉ có 1 viền vàng kim duy nhất */
+    border: 4px solid #FFD700 !important;
+    /* Xóa outline (viền xanh khi bấm) nếu có */
+    outline: none !important;
+    
+    /* Các thuộc tính đẹp cũ giữ nguyên */
+    background: linear-gradient(135deg, #a00000 0%, #800000 50%, #600000 100%);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+/* 3. Xử lý nút bấm (Tránh bị viền kép do mặc định trình duyệt) */
+.final-nav-btn, .final-btn, .final-options-grid button {
+    border-style: solid !important; /* Ép kiểu viền đơn */
+    outline: none !important; /* Bỏ viền xanh focus của trình duyệt */
+}
+
+/* (Tuỳ chọn) Nếu bạn thấy nút Mũi tên bị 2 viền, dùng đoạn này: */
+.final-nav-btn {
+    border: 3px solid #FFD700 !important; /* Chỉ 1 viền vàng */
+    box-shadow: none !important; /* Bỏ bóng nếu bóng làm lầm tưởng là viền */
 }
