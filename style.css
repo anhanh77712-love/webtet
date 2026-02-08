@@ -1022,6 +1022,92 @@ h2 { font-size: 1.5em; color: #fff; }
     #final-q-text { font-size: 1.3em; }
     .final-options-grid button { font-size: 1em; padding: 12px; }
 }
+
+
+/* --- CSS CHO KHỐI VIDEO GIẢI TRÍ --- */
+
+.tet-video-section {
+    margin: 60px auto;
+    text-align: center;
+    padding: 0 15px;
+    max-width: 1000px; /* Giới hạn chiều rộng để video không quá to trên màn hình lớn */
+}
+
+.video-title {
+    color: #FFD700;
+    font-size: 2.5em;
+    font-weight: 900;
+    text-transform: uppercase;
+    text-shadow: 3px 3px 0 #8B0000, 0 0 20px rgba(255, 215, 0, 0.4);
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+}
+
+/* Khung hộp chứa video (Style Gấm Đỏ Viền Vàng) */
+.video-box-pro {
+    border-radius: 25px;
+    padding: 30px; /* Padding ít hơn chút để video to hơn */
+    
+    /* Hiệu ứng bóng đổ 3D */
+    position: relative;
+    overflow: hidden;
+}
+
+/* --- QUAN TRỌNG: Responsive Video (Tỉ lệ 16:9) --- */
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* Tỉ lệ 16:9 (9 chia 16 = 0.5625) */
+    height: 0;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 2px solid #FFD700; /* Viền mỏng vàng bao quanh video */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    background: #000; /* Nền đen lúc chờ tải video */
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+/* Chú thích dưới video */
+.video-caption {
+    color: #FFD700;
+    font-size: 1.1em;
+    margin-top: 20px;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+}
+
+/* Tái sử dụng trang trí góc (nếu bạn chưa có class này thì thêm vào, nếu có ở khối Quiz rồi thì bỏ qua đoạn này) */
+.corner-decoration {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-image: url('https://www.transparenttextures.com/patterns/escheresque-dark.png');
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+}
+.corner-decoration.top-left { top: 0; left: 0; }
+.corner-decoration.top-right { top: 0; right: 0; transform: rotate(90deg); }
+.corner-decoration.bottom-left { bottom: 0; left: 0; transform: rotate(270deg); }
+.corner-decoration.bottom-right { bottom: 0; right: 0; transform: rotate(180deg); }
+
+/* Responsive trên điện thoại */
+@media (max-width: 768px) {
+    .video-box-pro {
+        padding: 15px; /* Giảm padding trên điện thoại để video to nhất có thể */
+        border-width: 3px;
+    }
+    .video-title {
+        font-size: 1.8em;
+    }
+}
 /* --- SỬA LỖI 2 VIỀN (CLEAN FIX) --- */
 
 /* 1. Xóa sạch viền và nền của thẻ bao ngoài cùng */
